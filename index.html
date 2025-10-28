@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Finder - Find Your Next Great Read</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>📚 Book Finder</h1>
+        <p>Discover your next favorite book with multiple search options</p>
+      </header>
+
+      <div class="search-section">
+        <div class="search-tabs">
+          <button class="tab-btn active" data-tab="title">
+            Search by Title
+          </button>
+          <button class="tab-btn" data-tab="author">Search by Author</button>
+          <button class="tab-btn" data-tab="subject">Search by Subject</button>
+          <button class="tab-btn" data-tab="advanced">Advanced Search</button>
+        </div>
+
+        <!-- Title Search -->
+        <div class="search-form active" id="title-search">
+          <input
+            type="text"
+            id="title-input"
+            placeholder="Enter book title..."
+            class="search-input"
+          />
+          <button onclick="searchBooks('title')" class="search-btn">
+            Search Books
+          </button>
+        </div>
+
+        <!-- Author Search -->
+        <div class="search-form" id="author-search">
+          <input
+            type="text"
+            id="author-input"
+            placeholder="Enter author name..."
+            class="search-input"
+          />
+          <button onclick="searchBooks('author')" class="search-btn">
+            Search Books
+          </button>
+        </div>
+
+        <!-- Subject Search -->
+        <div class="search-form" id="subject-search">
+          <input
+            type="text"
+            id="subject-input"
+            placeholder="Enter subject (e.g., fantasy, science, history)..."
+            class="search-input"
+          />
+          <button onclick="searchBooks('subject')" class="search-btn">
+            Search Books
+          </button>
+        </div>
+
+        <!-- Advanced Search -->
+        <div class="search-form" id="advanced-search">
+          <div class="advanced-grid">
+            <input
+              type="text"
+              id="adv-title"
+              placeholder="Title"
+              class="search-input"
+            />
+            <input
+              type="text"
+              id="adv-author"
+              placeholder="Author"
+              class="search-input"
+            />
+            <input
+              type="text"
+              id="adv-subject"
+              placeholder="Subject"
+              class="search-input"
+            />
+            <input
+              type="text"
+              id="adv-publisher"
+              placeholder="Publisher"
+              class="search-input"
+            />
+            <input
+              type="number"
+              id="adv-year"
+              placeholder="Publication Year"
+              class="search-input"
+            />
+            <select id="adv-language" class="search-input">
+              <option value="">Any Language</option>
+              <option value="eng">English</option>
+              <option value="spa">Spanish</option>
+              <option value="fre">French</option>
+              <option value="ger">German</option>
+              <option value="ita">Italian</option>
+            </select>
+          </div>
+          <button onclick="searchBooks('advanced')" class="search-btn">
+            Advanced Search
+          </button>
+        </div>
+      </div>
+
+      <div class="filters">
+        <label> <input type="checkbox" id="has-ebook" /> Has E-book </label>
+        <label>
+          <input type="checkbox" id="has-cover" /> Has Cover Image
+        </label>
+        <select id="sort-by">
+          <option value="">Sort by Relevance</option>
+          <option value="new">Newest First</option>
+          <option value="old">Oldest First</option>
+          <option value="editions">Most Editions</option>
+        </select>
+        <select id="results-limit">
+          <option value="10">10 Results</option>
+          <option value="20">20 Results</option>
+          <option value="50">50 Results</option>
+          <option value="100">100 Results</option>
+        </select>
+      </div>
+
+      <div class="loading" id="loading" style="display: none">
+        <div class="spinner"></div>
+        <p>Searching for books...</p>
+      </div>
+
+      <div class="results-info" id="results-info" style="display: none">
+        <p id="results-count"></p>
+      </div>
+
+      <div class="results-grid" id="results"></div>
+
+      <div class="pagination" id="pagination" style="display: none">
+        <button id="prev-btn" onclick="changePage(-1)">Previous</button>
+        <span id="page-info"></span>
+        <button id="next-btn" onclick="changePage(1)">Next</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
